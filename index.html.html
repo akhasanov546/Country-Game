@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Weight Game</title>
+
+    <style>
+    #L {
+      font-family: serif;
+    }
+
+    #quest {
+      font-family: serif;
+      font-size: 30px;
+    }
+
+    #f {
+      font-family: serif;
+      font-size: 20px;
+    }
+
+    body{
+      background-color: #5ab9db;
+    }
+
+    </style>
+
+    <script>
+        var pics = ["<img src = 'russia.jpg' height = 450px width = 650px>" , "<img src = 'tajikistan.jpg' height = 450px width = 650px>" , "<img src = 'croatia.png' height = 450px width = 650px>" , "<img src = 'spain.png' height = 450px width = 650px>" , "<img src = 'ethiopia.png' height = 450px width = 650px>" , "<img src = 'end.jpg' height = 450px width = 650px>"];
+        var questions = ["What is this Flag?","What is this Flag?", "What is this Flag?" , "What is this Flag?" , "What is this Flag?" , "That's all folks!"];
+        var Correct  = ["Russia","Tajikistan","Croatia", "Spain" , "Ethiopia"];
+        var Answers = [];
+        var point = 0;
+        var i = 0;
+        var j = 0;
+        var k = 0;
+
+      function disp()
+      {
+       document.getElementById('imgOut').innerHTML = pics[j];
+       document.getElementById('quest').innerHTML = questions[k];
+      }
+
+       function comp()
+       {
+           j++;
+           k++;
+           document.getElementById('imgOut').innerHTML = pics[j];
+           document.getElementById('quest').innerHTML = questions[k];
+           Answers[i] = document.getElementById('L').value;
+            if(Answers[i] == Correct[i])
+            {
+            point++;
+            }
+            if(point == 5)
+            {
+              document.getElementById('f').innerHTML = "You got 5 points! Congrats you win!";
+            }
+            else if(point == 4)
+            {
+              document.getElementById('f').innerHTML = "You got 4 points! So close, try again?";
+            }
+            else if(point == 3)
+            {
+              document.getElementById('f').innerHTML = "You got 3 points! That's pretty good, try again?";
+            }
+            else if(point == 2)
+            {
+              document.getElementById('f').innerHTML = "You got 2 points! That's average, try again?";
+            }
+            else if(point == 1)
+            {
+              document.getElementById('f').innerHTML = "You got 1 points! Ok, try again?";
+            }
+            else
+            {
+              document.getElementById('f').innerHTML = "You got 0 points. Try again?";
+            }
+            i++;
+     }
+
+    </script>
+  </head>
+  <body onload = "disp()">
+    <center><h1>Do you know the Country's Flags?</h1></center>
+    <center><p>First letter has to be capitalized.</p></center>
+    <br>
+    <span id = "quest"></span>
+    <br>
+    <span id = "imgOut"></span>
+    <br>
+    <input type = "text" value = "Your best guess?" id = "L">
+    <input type = "button" value = "Click" onclick = "comp()">
+    <br>
+    <span id = "f"></span>
+  </body>
+</html>
